@@ -1,7 +1,7 @@
 context:
   name: dm-control
-  version: "1.0.41"
-  mujoco_min_version: "3.8.1"
+  version: 1.0.50
+  mujoco_min_version: 3.8.1
 
 package:
   name: ${{ name|lower }}
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/d/dm_control/dm_control-${{ version }}.tar.gz
-  sha256: 644113b7bbba5884da57e15adbb28961de775d04e2db8b1bf0304c06835eff16
+  sha256: 59a58e424f96035627832c07d5dc4e915fa02e31f865e62149dde5bfaf54df6f
 
 build:
   number: 0
@@ -33,7 +33,6 @@ requirements:
     - dm-env
     - dm-tree !=0.1.2
     - glfw
-    - pyglfw
     - labmaze
     - lxml
     - mujoco >=${{ mujoco_min_version }}
@@ -45,7 +44,7 @@ requirements:
     - setuptools !=50.0.0
     - scipy
     - tqdm
-
+    - mujoco >=3.17.0
 tests:
   - python:
       imports:
@@ -53,7 +52,10 @@ tests:
       pip_check: true
       python_version: ${{ python_min }}.*
   - script:
-      - pytest --pyargs dm_control -v -k "not (render or viewer or glfw or Camera or Depth or Scene or Overlay or Context or Pixels or visualize or test_env_runs_cmu_humanoid_heterogeneous_forage or test_env_runs_cmu_humanoid_maze_forage or test_env_runs_cmu_humanoid_run_gaps or test_env_runs_cmu_humanoid_run_walls or test_env_runs_rodent_escape_bowl or test_env_runs_rodent_maze_forage or test_env_runs_rodent_run_gaps or test_env_runs_rodent_two_touch or test_termination_and_discount or test_contact or test_observables or test_initial_state_is_randomized40 or test_observation_arrays_dont_share_memory40 or test_observations_dont_contain_constant_elements40 or test_task_conforms_to_spec40 or test_can_compile_and_step_simulation or test_evaluate_observable0 or test_evaluate_observable1 or test_evaluate_observable2 or test_evaluate_observable3 or test_evaluate_observable4 or test_evaluate_observable5 or test_task_runs1 or test_task_runs10 or test_task_runs12 or test_task_runs14 or test_task_runs16 or test_task_runs18 or test_task_runs20 or test_task_runs22 or test_task_runs24 or test_task_runs3 or test_task_runs5 or test_task_runs8 or test_environment_is_deterministic40)"
+      - pytest --pyargs dm_control -v -k "not (render or viewer or glfw or Camera or Depth or Scene or Overlay or Context or Pixels or visualize or test_env_runs_cmu_humanoid_heterogeneous_forage or test_env_runs_cmu_humanoid_maze_forage or test_env_runs_cmu_humanoid_run_gaps or test_env_runs_cmu_humanoid_run_walls or 
+        test_env_runs_rodent_escape_bowl or test_env_runs_rodent_maze_forage or test_env_runs_rodent_run_gaps or test_env_runs_rodent_two_touch or test_termination_and_discount or test_contact or test_observables or test_initial_state_is_randomized40 or test_observation_arrays_dont_share_memory40 or 
+        test_observations_dont_contain_constant_elements40 or test_task_conforms_to_spec40 or test_can_compile_and_step_simulation or test_evaluate_observable0 or test_evaluate_observable1 or test_evaluate_observable2 or test_evaluate_observable3 or test_evaluate_observable4 or test_evaluate_observable5 or 
+        test_task_runs1 or test_task_runs10 or test_task_runs12 or test_task_runs14 or test_task_runs16 or test_task_runs18 or test_task_runs20 or test_task_runs22 or test_task_runs24 or test_task_runs3 or test_task_runs5 or test_task_runs8 or test_environment_is_deterministic40)"
     requirements:
       run:
         - python ${{ python_min }}.*
